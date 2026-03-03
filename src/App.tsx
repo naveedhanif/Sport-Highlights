@@ -153,7 +153,7 @@ function ImageHero({ title, onBack, onMenuClick }: { title?: string, onBack?: ()
   );
 }
 
-function CategoriesScreen({ onSelect, onMenuClick }: { onSelect: (c: Category) => void, onMenuClick: () => void }) {
+function CategoriesScreen({ onSelect, onMenuClick }: { onSelect: (c: Category) => void, onMenuClick: () => void, key?: string }) {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -204,6 +204,7 @@ function VideoListScreen({
   onCategoryChange: (c: Category) => void;
   onPlay: (v: Video) => void;
   onMenuClick: () => void;
+  key?: string;
 }) {
   const filteredVideos = category === 'All' 
     ? VIDEOS 
@@ -273,7 +274,19 @@ function VideoListScreen({
   );
 }
 
-function VideoDetailScreen({ video, onBack }: { video: Video; onBack: () => void }) {
+function VideoDetailScreen({ video, onBack }: { video: Video; onBack: () => void, key?: string }) {
+  const formatVimeoUrl = (url: string) => {
+    if (!url.includes('vimeo.com')) return url;
+    if (url.includes('player.vimeo.com')) return url;
+    
+    // Extract ID from vimeo.com/ID
+    const match = url.match(/vimeo\.com\/(\d+)/);
+    if (match && match[1]) {
+      return `https://player.vimeo.com/video/${match[1]}`;
+    }
+    return url;
+  };
+
   return (
     <motion.div 
       initial={{ opacity: 0, x: 20 }}
@@ -302,7 +315,7 @@ function VideoDetailScreen({ video, onBack }: { video: Video; onBack: () => void
         >
           {video.url.includes('vimeo.com') ? (
             <iframe 
-              src={video.url} 
+              src={formatVimeoUrl(video.url)} 
               className="w-full h-full" 
               frameBorder="0" 
               allow="autoplay; fullscreen; picture-in-picture" 
