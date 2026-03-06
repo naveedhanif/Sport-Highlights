@@ -1,11 +1,12 @@
 import { Video, Category } from './types';
-import { StumpsIcon, CatchIcon, RunOutIcon, FieldingIcon } from './components/CricketIcons';
+import { StumpsIcon, CatchIcon, RunOutIcon, FieldingIcon, CompilationIcon } from './components/CricketIcons';
 
 export const CATEGORIES: { name: Category; icon: any; color: string; image: string; description: string }[] = [
   { name: 'Best Wickets', icon: StumpsIcon, color: 'text-red-500', image: 'https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=800&q=80', description: 'Unplayable deliveries and shattered stumps' },
   { name: 'Best Catches', icon: CatchIcon, color: 'text-blue-500', image: 'https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?auto=format&fit=crop&w=800&q=80', description: 'Gravity-defying leaps and blinders' },
   { name: 'Best Run Outs', icon: RunOutIcon, color: 'text-yellow-500', image: 'https://images.unsplash.com/photo-1607734834519-d8576ae60ea6?auto=format&fit=crop&w=800&q=80', description: 'Direct hits and lightning-fast reflexes' },
   { name: 'Best Fielding', icon: FieldingIcon, color: 'text-green-500', image: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=800&q=80', description: 'Boundary saves and acrobatic stops' },
+  { name: 'Compilation', icon: CompilationIcon, color: 'text-purple-500', image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80', description: 'Best moments compiled' },
   { name: 'Best Six Run', icon: FieldingIcon, color: 'text-green-500', image: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=800&q=80', description: 'Best six hit by Zimbabwe team' },
 
 ];
@@ -16,4 +17,8 @@ export const VIDEOS: Video[] = [
   { id: '5', title: 'Incredible bowling by Sikandar Raza', thumbnail: 'https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=400&q=80', url: 'https://vimeo.com/1169980083', category: 'Best Wickets', duration: '0:55', views: '500K', description: 'Sikandar Raza best bowling in PSL.' },
   { id: '6', title: 'Incredible Wicket by Zimbabwe', thumbnail: 'https://images.unsplash.com/photo-1607734834519-d8576ae60ea6?auto=format&fit=crop&w=400&q=80', url: 'https://player.vimeo.com/video/1169295657', category: 'Best Wickets', duration: '0:40', views: '3.1M', description: 'A crucial wicket taken at a pivotal moment in the match.' },
   { id: '7', title: 'Incredible Wicket taken by Sikander Raza Magic', thumbnail: 'https://images.unsplash.com/photo-1593341646782-e0b495cff86d?auto=format&fit=crop&w=400&q=80', url: 'https://vimeo.com/1169980119', category: 'Best Wickets', duration: '1:05', views: '750K', description: 'Another incredible wicket showcasing the skill of Zimbabwe bowlers.' },
+  { id: '8', title: 'Zimbabwe Cricket Compilation', thumbnail: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=400&q=80', url: 'https://vimeo.com/1170972301', category: 'Compilation', duration: '2:15', views: '10M', description: 'A compilation of the best moments from Zimbabwe Cricket.' },
+  { id: '9', title: 'Incredible Catch', thumbnail: 'https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?auto=format&fit=crop&w=400&q=80', url: 'https://vimeo.com/1169295636', category: 'Best Catches', duration: '1:00', views: '500K', description: 'An incredible catch.' },
+  { id: '10', title: 'Awesome Six', thumbnail: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=400&q=80', url: 'https://vimeo.com/1169295665', category: 'Best Six Run', duration: '0:38', views: '1.8M', description: 'An awesome shot resulting in a beautiful six over the boundary.' },
+  { id: '11', title: 'Zimbabwe Cricket Compilation 2', thumbnail: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=400&q=80', url: 'https://vimeo.com/1170974703', category: 'Compilation', duration: '2:30', views: '12M', description: 'Another compilation of the best moments from Zimbabwe Cricket.' },
 ];
