@@ -40,3 +40,13 @@ export const FieldingIcon = ({ className }: { className?: string }) => (
     <path d="M15 12h5" strokeDasharray="2 2" />
   </svg>
 );
+
+export const CompilationIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M4 4h16v16H4z" />
+    <path d="M4 12h16" />
+    <path d="M12 4v16" />
+  </svg>
+);
+
+export const DummyExport = () => null;
