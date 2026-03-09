@@ -13,6 +13,7 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<Category>('All');
   const [playingVideo, setPlayingVideo] = useState<Video | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   useEffect(() => {
     if (currentScreen === 'splash') {
@@ -23,7 +24,17 @@ export default function App() {
     }
   }, [currentScreen]);
 
+  const showToast = (message: string) => {
+    setToastMessage(message);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+
   const handleCategorySelect = (category: Category) => {
+    if (category === 'Best Fielding' || category === 'Best Run Outs') {
+      showToast('Coming soon');
+      setIsDrawerOpen(false);
+      return;
+    }
     setSelectedCategory(category);
     setCurrentScreen('videolist');
     setIsDrawerOpen(false);
@@ -48,7 +59,7 @@ export default function App() {
             key="videolist" 
             category={selectedCategory} 
             onBack={() => setCurrentScreen('categories')}
-            onCategoryChange={setSelectedCategory}
+            onCategoryChange={handleCategorySelect}
             onPlay={handleVideoPlay}
             onMenuClick={() => setIsDrawerOpen(true)}
           />
@@ -67,6 +78,19 @@ export default function App() {
         onClose={() => setIsDrawerOpen(false)} 
         onSelectCategory={handleCategorySelect} 
       />
+
+      <AnimatePresence>
+        {toastMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, x: '-50%' }}
+            animate={{ opacity: 1, y: 0, x: '-50%' }}
+            exit={{ opacity: 0, y: 50, x: '-50%' }}
+            className="fixed bottom-8 left-1/2 z-[100] bg-gray-900 text-white px-6 py-3 rounded-full shadow-xl font-medium whitespace-nowrap"
+          >
+            {toastMessage}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -263,9 +287,15 @@ function VideoListScreen({
             </AnimatePresence>
             
             {filteredVideos.length === 0 && (
-              <div className="py-20 text-center text-gray-500">
-                No videos found for this category.
-              </div>
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="py-12 px-6 bg-red-50 border border-red-200 rounded-2xl text-center text-red-700 font-medium"
+              >
+                {category === 'Best Fielding' || category === 'Best Run Outs' 
+                  ? 'Coming soon' 
+                  : 'No videos found for this category.'}
+              </motion.div>
             )}
           </div>
         </div>
